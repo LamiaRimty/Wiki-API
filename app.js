@@ -33,6 +33,12 @@ app.post("/articles",function(req,res){
     console.log(req.body.title);
     console.log(req.body.content);
 
+    const newArticle = new Article({
+        title: req.body.title,
+        content:req.body.content
+    });
+    //newArticle.save();
+
 });
 
 app.listen(3000,function(){
