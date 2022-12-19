@@ -63,6 +63,20 @@ app.route("/articles").get(function(req,res){
 });
 
 
+///////////////Requested targeting a specific articles///////////////
+app.route("/articles/:articleTitle").get(function(req,res){
+    const requestArticleTitle= req.params.articleTitle;
+
+    Article.findOne({ title: requestArticleTitle},function(err,foundArticles){
+        if(foundArticles){
+            //console.log(foundArticles);
+            res.send(foundArticles);
+        }
+        else{
+            res.send("No articles matching that title was found!");
+        }
+    });
+});
 
 app.listen(3000,function(){
     console.log("Server is running on port 8000");
